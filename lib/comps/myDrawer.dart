@@ -16,7 +16,8 @@ class Mydrawer extends StatelessWidget {
               child: Center(
             child: CircleAvatar(
               radius: 30,
-              backgroundImage: AssetImage('assets/img/music.png'), // Replace with your app logo
+              backgroundImage: AssetImage(
+                  'assets/img/music.png'), // Replace with your app logo
             ),
           )),
           // for HOME PAGE
@@ -37,7 +38,8 @@ class Mydrawer extends StatelessWidget {
               onTap: () {
                 // closes the drawer and redirect user to about page
                 Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => AboutPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AboutPage()));
               },
             ),
           )

@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  provider: ^5.0.0
 
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.10+1
@@ -22,4 +23,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/img/music.png
+    - assets/img/
+    - assets/music/
+  fonts:
+  - family: poppins
+    fonts:
+    - asset: assets/fonts/poppins.ttf
+ 
