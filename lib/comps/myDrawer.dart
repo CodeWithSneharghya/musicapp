@@ -17,7 +17,7 @@ class Mydrawer extends StatelessWidget {
             child: CircleAvatar(
               radius: 30,
               backgroundImage: AssetImage(
-                  'assets/img/music.png'), // Replace with your app logo
+                  'assets/img/music.png'), 
             ),
           )),
           // for HOME PAGE

@@ -15,7 +15,7 @@ class SongUI extends StatelessWidget {
       final current = playlist[value.currentIndex ?? 0];
       return Scaffold(
         appBar: AppBar(
-          title: Text("Music UI"),
+          title: const Text("Music UI"),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -25,7 +25,7 @@ class SongUI extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Album Picture (Centered)
+                  // Album Picture 
                   Container(
                     width: 200,
                     height: 200,
@@ -34,22 +34,22 @@ class SongUI extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
                         image: AssetImage(
-                            current.image), // Replace with your album image
+                            current.image), 
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 16), // Add spacing between elements
+                  const SizedBox(height: 16), 
                   // Song Name
                   Text(
                     current.name,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
                   // Artist Name
                   Text(
                     current.artist,
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                    style: const TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                 ],
               ),
@@ -61,9 +61,9 @@ class SongUI extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // Start Time
-                  Text('10:00 AM'), // Replace with actual start time
+                  Text('10:00 AM'),
 
-                  // Shuffle Button (you can use an IconButton or any widget)
+                  // Shuffle Button 
                   IconButton(
                     icon: Icon(Icons.shuffle),
                     onPressed: () {
@@ -71,7 +71,7 @@ class SongUI extends StatelessWidget {
                     },
                   ),
 
-                  // Repeat Button (you can use an IconButton or any widget)
+                  // Repeat Button 
                   IconButton(
                     icon: Icon(Icons.repeat),
                     onPressed: () {
@@ -80,7 +80,7 @@ class SongUI extends StatelessWidget {
                   ),
 
                   // End Time
-                  Text('11:30 AM'), // Replace with actual end time
+                  Text('11:30 AM'),
                 ],
               ),
             ),
@@ -105,9 +105,9 @@ class SongUI extends StatelessWidget {
                     },
                     child: Icon(Icons.skip_previous),
                     style: ElevatedButton.styleFrom(
-                      elevation: 4, // Add elevation
-                      shape: CircleBorder(), // Make it circular
-                      padding: EdgeInsets.all(16), // Increase size
+                      elevation: 4, 
+                      shape: CircleBorder(), 
+                      padding: EdgeInsets.all(16), 
                     ),
                   ),
                   ElevatedButton(
@@ -116,9 +116,9 @@ class SongUI extends StatelessWidget {
                     },
                     child: Icon(Icons.play_arrow),
                     style: ElevatedButton.styleFrom(
-                      elevation: 4, // Add elevation
-                      shape: CircleBorder(), // Make it circular
-                      padding: EdgeInsets.all(20), // Increase size
+                      elevation: 4, 
+                      shape: CircleBorder(), 
+                      padding: EdgeInsets.all(20), 
                     ),
                   ),
                   ElevatedButton(
@@ -127,9 +127,9 @@ class SongUI extends StatelessWidget {
                     },
                     child: Icon(Icons.skip_next),
                     style: ElevatedButton.styleFrom(
-                      elevation: 4, // Add elevation
-                      shape: CircleBorder(), // Make it circular
-                      padding: EdgeInsets.all(16), // Increase size
+                      elevation: 4, 
+                      shape: CircleBorder(), 
+                      padding: EdgeInsets.all(16), 
                     ),
                   ),
                 ],
