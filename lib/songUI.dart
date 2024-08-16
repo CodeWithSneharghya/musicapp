@@ -5,6 +5,13 @@ import 'package:provider/provider.dart';
 class SongUI extends StatelessWidget {
   const SongUI({super.key});
 
+  // convert time to min and seconds
+  String formatTime(Duration duration){
+    String seconds = duration.inSeconds.remainder(60).toString().padLeft(2, '0');
+    String result = "${duration.inMinutes}:$seconds";
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<Playlist>(builder: (context, value, child) {
@@ -61,7 +68,7 @@ class SongUI extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // Start Time
-                  Text('10:00 AM'),
+                  Text(formatTime(value.currentDuration)),
 
                   // Shuffle Button 
                   IconButton(
@@ -80,19 +87,24 @@ class SongUI extends StatelessWidget {
                   ),
 
                   // End Time
-                  Text('11:30 AM'),
+                  Text(formatTime(value.totalDur)),
                 ],
               ),
             ),
             SliderTheme(
                 data: SliderTheme.of(context).copyWith(
-                    thumbShape: RoundSliderThumbShape(enabledThumbRadius: 0)),
+                    thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 0)),
                 child: Slider(
-                    value: 50,
+                    value: value.currentDuration.inSeconds.toDouble(),
                     min: 0,
-                    max: 100,
+                    max: value.totalDur.inSeconds.toDouble(),
                     activeColor: Colors.greenAccent,
-                    onChanged: (value) {}))
+                    onChanged: (double double) {
+                      
+                      value.seek(Duration(seconds: double.toInt()));
+                    },
+                    onChangeEnd:(double double) {
+                    },))
             // controls
             ,
             Center(
@@ -102,6 +114,7 @@ class SongUI extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       // Handle previous track action
+                      value.playPrev();
                     },
                     child: Icon(Icons.skip_previous),
                     style: ElevatedButton.styleFrom(
@@ -113,8 +126,9 @@ class SongUI extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       // Handle play/pause action
+                      value.toggleState();
                     },
-                    child: Icon(Icons.play_arrow),
+                    child: Icon(value.isPlaying ? Icons.pause : Icons.play_arrow),
                     style: ElevatedButton.styleFrom(
                       elevation: 4, 
                       shape: CircleBorder(), 
@@ -124,12 +138,13 @@ class SongUI extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       // Handle next track action
+                      value.playNext();
                     },
                     child: Icon(Icons.skip_next),
                     style: ElevatedButton.styleFrom(
                       elevation: 4, 
                       shape: CircleBorder(), 
-                      padding: EdgeInsets.all(16), 
+                      padding: const EdgeInsets.all(16), 
                     ),
                   ),
                 ],
