@@ -22,7 +22,7 @@ class SongUI extends StatelessWidget {
       final current = playlist[value.currentIndex ?? 0];
       return Scaffold(
         appBar: AppBar(
-          title: const Text("Music UI"),
+          title: const Text("Music Player"),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -69,20 +69,12 @@ class SongUI extends StatelessWidget {
                 children: [
                   // Start Time
                   Text(formatTime(value.currentDuration)),
-
-                  // Shuffle Button 
-                  IconButton(
-                    icon: Icon(Icons.shuffle),
-                    onPressed: () {
-                      // Handle shuffle action
-                    },
-                  ),
-
                   // Repeat Button 
                   IconButton(
-                    icon: Icon(Icons.repeat),
+                    icon: const Icon(Icons.restart_alt_rounded),
                     onPressed: () {
                       // Handle repeat action
+                      value.resetDuration();
                     },
                   ),
 
@@ -116,36 +108,36 @@ class SongUI extends StatelessWidget {
                       // Handle previous track action
                       value.playPrev();
                     },
-                    child: Icon(Icons.skip_previous),
                     style: ElevatedButton.styleFrom(
                       elevation: 4, 
-                      shape: CircleBorder(), 
-                      padding: EdgeInsets.all(16), 
+                      shape: const CircleBorder(), 
+                      padding: const EdgeInsets.all(16), 
                     ),
+                    child: const Icon(Icons.skip_previous),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       // Handle play/pause action
                       value.toggleState();
                     },
-                    child: Icon(value.isPlaying ? Icons.pause : Icons.play_arrow),
                     style: ElevatedButton.styleFrom(
                       elevation: 4, 
-                      shape: CircleBorder(), 
-                      padding: EdgeInsets.all(20), 
+                      shape: const CircleBorder(), 
+                      padding: const EdgeInsets.all(20), 
                     ),
+                    child: Icon(value.isPlaying ? Icons.pause : Icons.play_arrow),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       // Handle next track action
                       value.playNext();
                     },
-                    child: Icon(Icons.skip_next),
                     style: ElevatedButton.styleFrom(
                       elevation: 4, 
-                      shape: CircleBorder(), 
+                      shape: const CircleBorder(), 
                       padding: const EdgeInsets.all(16), 
                     ),
+                    child: const Icon(Icons.skip_next),
                   ),
                 ],
               ),

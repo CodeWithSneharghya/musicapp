@@ -1,11 +1,12 @@
 import 'package:firstday/comps/playlist.dart';
-import 'package:firstday/songUI.dart';
+import 'package:firstday/song_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:firstday/comps/myDrawer.dart';
+import 'package:firstday/comps/my_drawer.dart';
 import 'package:provider/provider.dart';
 import 'package:firstday/comps/song.dart';
 
 void main() {
+  // to mamane states it is used here
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
       create: (context) => Playlist(),
@@ -32,7 +33,7 @@ class Main extends StatelessWidget {
           darkTheme:
               ThemeData(fontFamily: 'poppins', brightness: Brightness.dark),
           themeMode: currentMode,
-          home: Home(),
+          home: const Home(),
         );
       },
     );
@@ -59,11 +60,11 @@ class Home extends StatelessWidget {
       // uses the current theme
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
-        title: const Text("Music"),
+        title: const Text("MusicApp"),
         // right theme toggler button
         backgroundColor: Main.themeNotifier.value == ThemeMode.light
-            ? Color.fromARGB(255, 170, 216, 0) // Light mode color
-            : Color.fromARGB(255, 79, 100, 0), // Dark mode color
+            ? const Color.fromARGB(255, 170, 216, 0) // Light mode color
+            : const Color.fromARGB(255, 79, 100, 0), // Dark mode color
         actions: [
           // adding some padding
           Padding(
@@ -83,7 +84,7 @@ class Home extends StatelessWidget {
         ],
       ),
       // a drawer imported from comps
-      drawer: Mydrawer(),
+      drawer: const Mydrawer(),
       body: Consumer<Playlist>(
         builder: (context, value, child) {
           // fetching the playlist

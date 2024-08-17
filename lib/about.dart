@@ -2,11 +2,13 @@
 import 'package:flutter/material.dart';
 
 class AboutPage extends StatelessWidget {
+  const AboutPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('About My Music App'),
+        title: const Text('About MusicApp'),
       ),
       body: const Center(
         child: Column(
@@ -20,22 +22,22 @@ class AboutPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              'My Music App',
+              'MusicApp',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
             Text(
-              'Version 1.0.0',
+              'Version 2024.08',
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
             SizedBox(height: 20),
             Text(
-              'A music app that lets you discover and enjoy your favorite tunes!',
+              'A music app that plays music!',
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
             Text(
-              'Developed by: )',
+              'Developed by: Sneharghya and Vaibhav',
               style: TextStyle(fontStyle: FontStyle.italic),
             ),
           ],

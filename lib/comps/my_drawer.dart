@@ -12,7 +12,7 @@ class Mydrawer extends StatelessWidget {
       child: Column(
         children: [
           // banner
-          DrawerHeader(
+          const DrawerHeader(
               child: Center(
             child: CircleAvatar(
               radius: 30,
@@ -22,19 +22,19 @@ class Mydrawer extends StatelessWidget {
           )),
           // for HOME PAGE
           Padding(
-            padding: EdgeInsets.only(left: 25, top: 25),
+            padding: const EdgeInsets.only(left: 25, top: 25),
             child: ListTile(
-              title: Text("Home"),
-              leading: Icon(Icons.home),
+              title: const Text("Home"),
+              leading: const Icon(Icons.home),
               onTap: () => Navigator.pop(context), // closes the drawer
             ),
           ),
           // FOR ABOUT PAGE
           Padding(
-            padding: EdgeInsets.only(left: 25, top: 0),
+            padding: const EdgeInsets.only(left: 25, top: 0),
             child: ListTile(
-              title: Text("About"),
-              leading: Icon(Icons.info),
+              title: const Text("About"),
+              leading: const Icon(Icons.info),
               onTap: () {
                 // closes the drawer and redirect user to about page
                 Navigator.pop(context);
