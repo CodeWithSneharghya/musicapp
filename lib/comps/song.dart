@@ -5,12 +5,14 @@ class Song {
   String artist;
   String image;
   String audio;
+  bool like;
   // constructor
   Song(
   this.name,
   this.artist,
   this.image,
   this.audio,
+  {this.like = false}
   );
 
 }

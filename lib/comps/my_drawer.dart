@@ -1,4 +1,5 @@
 import 'package:firstday/about.dart';
+import 'package:firstday/liked.dart';
 import 'package:flutter/material.dart';
 
 class Mydrawer extends StatelessWidget {
@@ -16,22 +17,34 @@ class Mydrawer extends StatelessWidget {
               child: Center(
             child: CircleAvatar(
               radius: 30,
-              backgroundImage: AssetImage(
-                  'assets/img/music.png'), 
+              backgroundImage: AssetImage('assets/img/music.png'),
             ),
           )),
           // for HOME PAGE
           Padding(
-            padding: const EdgeInsets.only(left: 25, top: 25),
+            padding: const EdgeInsets.only(left: 15, top: 25),
             child: ListTile(
               title: const Text("Home"),
               leading: const Icon(Icons.home),
               onTap: () => Navigator.pop(context), // closes the drawer
             ),
           ),
+          // user info
+          Padding(
+            padding: const EdgeInsets.only(left: 15),
+            child: ListTile(
+              title: const Text("Liked Songs"),
+              leading: const Icon(Icons.favorite),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Liked()));
+              }, // closes the drawer
+            ),
+          ),
           // FOR ABOUT PAGE
           Padding(
-            padding: const EdgeInsets.only(left: 25, top: 0),
+            padding: const EdgeInsets.only(left: 15),
             child: ListTile(
               title: const Text("About"),
               leading: const Icon(Icons.info),

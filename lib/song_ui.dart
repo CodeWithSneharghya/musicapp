@@ -77,6 +77,14 @@ class SongUI extends StatelessWidget {
                       value.resetDuration();
                     },
                   ),
+                  // add to liked songs
+                  IconButton(
+                    icon: current.like ? const Icon(Icons.favorite, color: Colors.red) : const Icon(Icons.favorite_outline),
+                    onPressed: () {
+                      // Handle repeat action
+                      value.addToLiked();
+                    },
+                  ),
 
                   // End Time
                   Text(formatTime(value.totalDur)),

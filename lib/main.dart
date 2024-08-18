@@ -110,6 +110,7 @@ class Home extends StatelessWidget {
                 title: Text(song.name),
                 subtitle: Text(song.artist),
                 leading: Image.asset(song.image),
+                trailing: song.like ? const Icon(Icons.favorite, color: Colors.red) : const Icon(Icons.favorite_outline),
                 onTap: () => navigate(index),
               );
             },

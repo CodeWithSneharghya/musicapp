@@ -5,15 +5,14 @@ import 'package:flutter/material.dart';
 class Playlist extends ChangeNotifier {
   List<Song> playlistSource = [
     Song("The Spectre", "Alan Walker", "assets/img/spectre.jpg",
-        "music/spectre.mp3"),
+        "music/spectre.mp3", like: true),
     Song("Violet", "Connor Price and KILLA", "assets/img/violet.png",
         "music/violet.mp3"),
     Song("Alone", "Marshmello", "assets/img/alone.jpg", "music/alone.mp3")
   ];
-
   // current
   int? current = -1;
-  int? curInst = -1;// to check if current song is same as clicked
+  int? curInst = -1; // to check if current song is same as clicked
   // audio player
   final AudioPlayer aud = AudioPlayer();
   // duration
@@ -28,16 +27,15 @@ class Playlist extends ChangeNotifier {
     try {
       final String path = playlistSource[currentIndex!].audio;
       // if current song is tapped resume else play new
-      if(currentIndex == curInst){
-        aud.seek(curDur + Durations.short1); // added to fix peaks
-      }
-      else{
+      if (currentIndex == curInst) {
+        aud.seek(curDur + Durations.short4); // added to fix peaks
+      } else {
         // stop all audio before playing
-      await aud.stop();
-      // then play the main audio
-      await aud.play(AssetSource(path));
+        await aud.stop();
+        // then play the main audio
+        await aud.play(AssetSource(path));
 
-      _isPlaying = true;
+        _isPlaying = true;
       }
       curInst = currentIndex;
       notifyListeners();
@@ -102,6 +100,15 @@ class Playlist extends ChangeNotifier {
       resume();
     }
     notifyListeners();
+  }
+
+  // add to Liked songs or remove
+  void addToLiked() {
+    if (playlistSource[currentIndex!].like) {
+      playlistSource[currentIndex!].like = false;
+    } else {
+      playlistSource[currentIndex!].like = true;
+    }
   }
 
   //listen to duration
