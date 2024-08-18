@@ -1,3 +1,4 @@
+import 'package:firstday/comps/mini_player.dart';
 import 'package:firstday/comps/playlist.dart';
 import 'package:firstday/song_ui.dart';
 import 'package:flutter/material.dart';
@@ -7,12 +8,14 @@ import 'package:firstday/comps/song.dart';
 
 void main() {
   // to mamane states it is used here
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(
-      create: (context) => Playlist(),
-    )
-  ],
-  child: const Main(),));
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => Playlist(),
+      )
+    ],
+    child: const Main(),
+  ));
 }
 
 class Main extends StatelessWidget {
@@ -42,18 +45,24 @@ class Main extends StatelessWidget {
 
 // home page
 class Home extends StatelessWidget {
+  // convert time to min and seconds
+  String formatTime(Duration duration){
+    String seconds = duration.inSeconds.remainder(60).toString().padLeft(2, '0');
+    String result = "${duration.inMinutes}:$seconds";
+    return result;
+  }
   const Home({super.key});
   @override
   Widget build(BuildContext context) {
     late final dynamic playListSource;
     playListSource = Provider.of<Playlist>(context, listen: false);
     // navigating to a song
-    void navigate(int index){
+    void navigate(int index) {
       // update the index
       playListSource.currentIndex = index;
-
       // go to the song page
-      Navigator.push(context, MaterialPageRoute(builder: (context) => SongUI()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const SongUI()));
     }
 
     return Scaffold(
@@ -93,21 +102,22 @@ class Home extends StatelessWidget {
           // this creates list view
           return ListView.builder(
             itemCount: playlist.length,
-          itemBuilder: (context, index) {
-            // get each song
-            final Song song = playlist[index];
-            // return the UI 
-            return ListTile(
-              title: Text(song.name),
-              subtitle: Text(song.artist),
-              leading: Image.asset(song.image),
-              onTap: () => navigate(index),
-
-            );
-          },
-        );
-        } ,
+            itemBuilder: (context, index) {
+              // get each song
+              final Song song = playlist[index];
+              // return the UI
+              return ListTile(
+                title: Text(song.name),
+                subtitle: Text(song.artist),
+                leading: Image.asset(song.image),
+                onTap: () => navigate(index),
+              );
+            },
+          );
+        },
       ),
+      // miniplayer
+      bottomNavigationBar: const MiniPlayer(),
     );
   }
 }

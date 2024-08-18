@@ -10,10 +10,13 @@ This example defines an user interface (UI) for a music player app. It will show
 In this code, we created an About page for a music app. It shows the logo and name of your app, version number…as well as: a tagline (“A music app that plays music!” ), and credits the developers.
 
 ### `playlist.dart`
-This code defines a class called "Playlist" that manages a list of songs, playback controls, and audio player functionality for a music app. It includes features like playing, pausing, resuming, seeking through songs with a slider, playing the next or previous song, resetting the duration, toggling between pause and resume, and keeping track of the current and total song duration. The code also uses getters and setters to access and update playlist information from other parts of the application.
+This defines a class called "Playlist" that manages a list of songs, playback controls, and audio player functionality for a music app. It includes features like playing, pausing, resuming, seeking through songs with a slider, playing the next or previous song, resetting the duration, toggling between pause and resume, and keeping track of the current and total song duration. The code also uses getters and setters to access and update playlist information from other parts of the application.
 
 ### `my_drawer.dart`
 This code defines a widget called "Mydrawer" that creates a navigation drawer for a music app. The drawer includes a banner with an app logo, and two list items: "Home" and "About". Tapping "Home" closes the drawer, while tapping "About" closes the drawer and opens the "AboutPage" in a new screen.
+
+### `mini_player.dart`
+It defines a widget called MiniPlayer. It displays information about the currently playing song, including its image, title, artist, and elapsed time. It also provides a play/pause button and allows the user to navigate to a detailed song view by tapping on the player. The code retrieves data from a Playlist provider and formats the elapsed time for display.
 
 ## Key terms
 

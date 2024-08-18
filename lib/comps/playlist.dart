@@ -12,7 +12,8 @@ class Playlist extends ChangeNotifier {
   ];
 
   // current
-  int? current = 0;
+  int? current = -1;
+  int? curInst = -1;// to check if current song is same as clicked
   // audio player
   final AudioPlayer aud = AudioPlayer();
   // duration
@@ -26,15 +27,23 @@ class Playlist extends ChangeNotifier {
   void play() async {
     try {
       final String path = playlistSource[currentIndex!].audio;
-      // stop all audio before playing
+      // if current song is tapped resume else play new
+      if(currentIndex == curInst){
+        aud.seek(curDur + Durations.short1); // added to fix peaks
+      }
+      else{
+        // stop all audio before playing
       await aud.stop();
       // then play the main audio
       await aud.play(AssetSource(path));
 
       _isPlaying = true;
+      }
+      curInst = currentIndex;
       notifyListeners();
     } catch (e) {
       // Handle the error
+      // ignore: avoid_print
       print('Error playing audio: $e');
     }
   }

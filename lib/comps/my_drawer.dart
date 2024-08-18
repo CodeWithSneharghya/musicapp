@@ -39,7 +39,7 @@ class Mydrawer extends StatelessWidget {
                 // closes the drawer and redirect user to about page
                 Navigator.pop(context);
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AboutPage()));
+                    MaterialPageRoute(builder: (context) => const AboutPage()));
               },
             ),
           )
