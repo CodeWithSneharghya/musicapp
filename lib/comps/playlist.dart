@@ -8,9 +8,12 @@ class Playlist extends ChangeNotifier {
     Song("The Spectre", "Alan Walker", "assets/img/spectre.jpg",
         "music/spectre.mp3",
         like: true),
-    Song("Violet", "Connor Price and KILLA", "assets/img/violet.png",
-        "music/violet.mp3"),
-    Song("Alone", "Marshmello", "assets/img/alone.jpg", "music/alone.mp3")
+    Song("Violet", "Connor Price and KILLA", "assets/img/violet.png", "music/violet.mp3"),
+    Song("Alone", "Marshmello", "assets/img/alone.jpg", "music/alone.mp3"),
+    Song('Shape of You', 'Ed Sheeran', 'assets/img/shape.png', 'music/shape.mp3', like: true),
+    Song('Believer', 'Imagine Dragons', 'assets/img/believer.jpg', 'music/believer.mp3'),
+    Song('MONTAGEM CORAL', 'DJ Holanda, MC GW, and MC TH', 'assets/img/montagem.png', 'music/montagem.mp3'),
+    Song('Faded', 'Alan Walker', 'assets/img/faded.jpg', 'music/faded.mp3'),
   ];
   // for history reasons
   List<Song> timedPlaylist = [

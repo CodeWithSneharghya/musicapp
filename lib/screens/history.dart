@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:firstday/comps/playlist.dart';
 import 'package:firstday/comps/song.dart';
 
 class History extends StatelessWidget {
   const History({super.key});
-  // current time to string converter
-  void getCurrentDateTime() {
-    final now = DateTime.now();
-    final formatter = DateFormat('hh:mma dd/MM/yy ');
-    print(formatter.format(now));
-  }
 
   @override
   Widget build(BuildContext context) {

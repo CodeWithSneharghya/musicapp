@@ -39,6 +39,7 @@ class Liked extends StatelessWidget {
                 title: Text(song.name),
                 subtitle: Text(song.artist),
                 leading: Image.asset(song.image),
+                trailing: const Icon(Icons.favorite),
                 onTap: () => navigate(index),
               ) : const SizedBox();
             },
