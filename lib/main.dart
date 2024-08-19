@@ -93,7 +93,7 @@ class Home extends StatelessWidget {
         ],
       ),
       // a drawer imported from comps
-      drawer: const Mydrawer(),
+      drawer: const MyDrawer(),
       body: Consumer<Playlist>(
         builder: (context, value, child) {
           // fetching the playlist
