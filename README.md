@@ -18,6 +18,15 @@ This code defines a widget called "Mydrawer" that creates a navigation drawer fo
 ### `mini_player.dart`
 It defines a widget called MiniPlayer. It displays information about the currently playing song, including its image, title, artist, and elapsed time. It also provides a play/pause button and allows the user to navigate to a detailed song view by tapping on the player. The code retrieves data from a Playlist provider and formats the elapsed time for display.
 
+### `liked.dart`
+This Flutter code displays a "Liked songs" screen with a list of songs fetched from a Playlist provider. It shows details like song title, artist, and image for liked songs only. Tapping a song navigates to a separate song details page (SongUI)
+
+### `account.dart`
+This Flutter code implements a "Change account details" screen. Users can input and save their username and email using TextField and TextFormField components. Data is stored locally using SharedPreferences. The code also validates the email format and displays the saved data in a card.
+
+### `history.dart`
+This Flutter code displays a "History" screen that shows a list of songs from the playlist's history. It utilizes the Playlist provider class to access the historyPlaylist. Similar to the "Liked songs" screen, it builds a ListView.builder to display each song's details including title, artist, image, and a history icon (Icon(Icons.history_outlined)) in the trailing section.
+
 ## Key terms
 
 ### Provider
@@ -25,5 +34,8 @@ Provider is a state management solution in Flutter that makes it easier to share
 
 ### Consumer
 Consumer is a widget that listens to changes in the data provided by Provider. When the data changes, Consumer rebuilds itself and any widgets within it that depend on that data. This ensures that your UI stays up-to-date with the latest information.
+
+### Shared Preferences
+It's a simple key-value storage system for storing small amounts of data locally on a user's device. It's ideal for saving app settings, user preferences, or other small pieces of data that need to persist across app sessions.
 
 
