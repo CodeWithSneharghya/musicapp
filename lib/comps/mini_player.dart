@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firstday/comps/playlist.dart';
 import 'package:provider/provider.dart';
 import 'package:firstday/comps/song.dart';
-import 'package:firstday/song_ui.dart';
+import 'package:firstday/screens/song_ui.dart';
 
 class MiniPlayer extends StatelessWidget {
   const MiniPlayer({super.key});

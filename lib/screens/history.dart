@@ -1,32 +1,28 @@
-
-import 'package:firstday/comps/playlist.dart';
-import 'package:firstday/song_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:firstday/comps/playlist.dart';
 import 'package:firstday/comps/song.dart';
 
-class Liked extends StatelessWidget {
-  const Liked({super.key});
+class History extends StatelessWidget {
+  const History({super.key});
+  // current time to string converter
+  void getCurrentDateTime() {
+    final now = DateTime.now();
+    final formatter = DateFormat('hh:mma dd/MM/yy ');
+    print(formatter.format(now));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Liked songs"),
+        title: const Text("History"),
       ),
       body: Consumer<Playlist>(
         builder: (context, value, child) {
-          late final dynamic playListSource;
-          playListSource = Provider.of<Playlist>(context, listen: false);
           // fetching the playlist
-          List<Song> playlist = value.playlist;
-          void navigate(int index) {
-            // update the index
-            playListSource.currentIndex = index;
-            // go to the song page
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const SongUI()));
-          }
+          List<Song> playlist = value.historyPlaylist;
 
           // this creates list view
           return ListView.builder(
@@ -35,12 +31,12 @@ class Liked extends StatelessWidget {
               // get each song
               final Song song = playlist[index];
               // return the UI
-              return song.like ? ListTile(
+              return ListTile(
                 title: Text(song.name),
                 subtitle: Text(song.artist),
                 leading: Image.asset(song.image),
-                onTap: () => navigate(index),
-              ) : const SizedBox();
+                trailing: const Icon(Icons.history_outlined),
+              );
             },
           );
         },

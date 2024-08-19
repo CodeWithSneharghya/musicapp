@@ -7,12 +7,5 @@ class Song {
   String audio;
   bool like;
   // constructor
-  Song(
-  this.name,
-  this.artist,
-  this.image,
-  this.audio,
-  {this.like = false}
-  );
-
+  Song(this.name, this.artist, this.image, this.audio, {this.like = false});
 }

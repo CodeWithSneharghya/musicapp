@@ -1,8 +1,10 @@
-import 'package:firstday/about.dart';
-import 'package:firstday/account.dart';
-import 'package:firstday/liked.dart';
+import 'package:firstday/screens/about.dart';
+import 'package:firstday/screens/account.dart';
+import 'package:firstday/screens/history.dart';
+import 'package:firstday/screens/liked.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 // using shared_preferences to store data in local storage
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -10,6 +12,7 @@ class MyDrawer extends StatefulWidget {
   @override
   State<MyDrawer> createState() => _MyDrawer();
 }
+
 class _MyDrawer extends State<MyDrawer> {
   // username and email
   String _username = '';
@@ -21,13 +24,13 @@ class _MyDrawer extends State<MyDrawer> {
       _email = prefs.getString('email') ?? '';
     });
   }
+
   // init the state in stateful widget
   @override
   void initState() {
     super.initState();
     _loadUserData();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -39,19 +42,24 @@ class _MyDrawer extends State<MyDrawer> {
           // banner
           DrawerHeader(
               child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const CircleAvatar(
-              radius: 30,
-              backgroundImage: AssetImage('assets/img/music.png'),
-            ),
-            Text("Hi $_username", style: const TextStyle(fontSize: 20),),
-            Text(_email, style: const TextStyle(color: Colors.grey, fontSize: 15),)
-              ],
-            )
-          )),
+                  child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const CircleAvatar(
+                radius: 30,
+                backgroundImage: AssetImage('assets/img/music.png'),
+              ),
+              Text(
+                "Hi $_username",
+                style: const TextStyle(fontSize: 20),
+              ),
+              Text(
+                _email,
+                style: const TextStyle(color: Colors.grey, fontSize: 15),
+              )
+            ],
+          ))),
           // for HOME PAGE
           Padding(
             padding: const EdgeInsets.only(left: 15, top: 25),
@@ -74,7 +82,7 @@ class _MyDrawer extends State<MyDrawer> {
               }, // closes the drawer
             ),
           ),
-          // liked songs
+          // history
           Padding(
             padding: const EdgeInsets.only(left: 15),
             child: ListTile(
@@ -83,7 +91,7 @@ class _MyDrawer extends State<MyDrawer> {
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Liked()));
+                    MaterialPageRoute(builder: (context) => const History()));
               }, // closes the drawer
             ),
           ),
@@ -95,8 +103,10 @@ class _MyDrawer extends State<MyDrawer> {
               leading: const Icon(Icons.account_box),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const RegisterPage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RegisterPage()));
               }, // closes the drawer
             ),
           ),

@@ -3,12 +3,19 @@ import 'package:firstday/comps/song.dart';
 import 'package:flutter/material.dart';
 
 class Playlist extends ChangeNotifier {
+
   List<Song> playlistSource = [
     Song("The Spectre", "Alan Walker", "assets/img/spectre.jpg",
-        "music/spectre.mp3", like: true),
+        "music/spectre.mp3",
+        like: true),
     Song("Violet", "Connor Price and KILLA", "assets/img/violet.png",
         "music/violet.mp3"),
     Song("Alone", "Marshmello", "assets/img/alone.jpg", "music/alone.mp3")
+  ];
+  // for history reasons
+  List<Song> timedPlaylist = [
+    Song("The Spectre", "Alan Walker", "assets/img/spectre.jpg",
+        "music/spectre.mp3", like: true)
   ];
   // current
   int? current = -1;
@@ -36,6 +43,14 @@ class Playlist extends ChangeNotifier {
         await aud.play(AssetSource(path));
 
         _isPlaying = true;
+        timedPlaylist.insert(
+            0,
+            Song(
+                playlistSource[currentIndex!].name,
+                playlistSource[currentIndex!].artist,
+                playlistSource[currentIndex!].image,
+                playlistSource[currentIndex!].audio,
+                like: playlistSource[currentIndex!].like));
       }
       curInst = currentIndex;
       notifyListeners();
@@ -133,6 +148,7 @@ class Playlist extends ChangeNotifier {
 
   // using getters to get and pass value in other components
   List<Song> get playlist => playlistSource;
+  List<Song> get historyPlaylist => timedPlaylist;
   int? get currentIndex => current;
   bool get isPlaying => _isPlaying;
   Duration get currentDuration => curDur;

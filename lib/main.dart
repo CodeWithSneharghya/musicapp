@@ -1,13 +1,13 @@
 import 'package:firstday/comps/mini_player.dart';
 import 'package:firstday/comps/playlist.dart';
-import 'package:firstday/song_ui.dart';
+import 'package:firstday/screens/song_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:firstday/comps/my_drawer.dart';
+import 'package:firstday/screens/my_drawer.dart';
 import 'package:provider/provider.dart';
 import 'package:firstday/comps/song.dart';
 
 void main() {
-  // to mamane states it is used here
+  // to manage states it is used here
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
